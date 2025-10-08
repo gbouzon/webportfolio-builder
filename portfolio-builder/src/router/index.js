@@ -8,11 +8,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { routes } from 'vue-router/auto-routes'
+import ElementList from '@/components/builder/ElementList.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: setupLayouts(routes),
 })
+
+router.addRoute(
+  { path: '/Element', name: 'Element', component: ElementList },
+)
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
 router.onError((err, to) => {
